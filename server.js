@@ -22,12 +22,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('messageData', (data) => {
-        // Xử lý dữ liệu nhận được từ sự kiện 'messageData'
         console.log(`Received message data from ${socket.id}:`, data.message);
 
-        // Broadcast tin nhắn đến tất cả các client khác
         io.emit('messageData', {
             username: data.nameUser,
+            avatar:data.avatar,
             message: data.message,
             socketID: data.socketID,
         });
